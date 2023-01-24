@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-ul-item {
+        @apply cursor-pointer relative
+    }
+    .nav-ul-item::before {
+        @apply content-[''] absolute block w-full h-[2px] bg-white bottom-[-2px] right-0 origin-right transition-[transform] scale-x-0 ease-in-out
+    }
+
+    .nav-ul-item:hover::before {
+        @apply origin-left scale-x-100
+    }
+}

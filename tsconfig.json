@@ -17,6 +17,8 @@
     "jsx": "react-jsx"
   },
   "include": [
+    "postcss.config.cjs",
+    "tailwind.config.cjs",
     ".eslintrc.cjs",
     "vite.config.ts",
     "src"
