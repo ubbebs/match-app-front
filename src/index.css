@@ -1,16 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
     .nav-ul-item {
-        @apply cursor-pointer relative
+        @apply cursor-pointer relative duration-150
     }
+
+    .nav-ul-item:hover {
+        @apply text-white
+    }
+
     .nav-ul-item::before {
-        @apply content-[''] absolute block w-full h-[2px] bg-white bottom-[-2px] right-0 origin-right transition-[transform] scale-x-0 ease-in-out
+        @apply content-[''] absolute block w-full h-[2px] bg-layout-pink bottom-[-4px] right-0 origin-right transition-[transform] scale-x-0 ease-in-out
     }
 
     .nav-ul-item:hover::before {
         @apply origin-left scale-x-100
     }
+
+    .before-line::before {
+        @apply content-[''] absolute w-[2px] h-full bg-layout-pink -left-10
+    }
+}
+
+#root {
+    overflow-x: hidden;
 }
