@@ -21,7 +21,7 @@
     }
 
     .before-line::before {
-        @apply content-[''] absolute w-[2px] h-full bg-layout-pink -left-10
+        @apply content-[''] absolute w-1 h-full bg-layout-pink -left-10
     }
 }
 

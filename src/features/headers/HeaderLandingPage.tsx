@@ -1,12 +1,18 @@
-import { useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import { LoginButton } from '../../components/buttons/LoginButton'
+import { SubmitButton } from '../../components/buttons/SubmitButton'
 import { Navbar } from './components/Navbar'
+import { useHeaderLandingPage } from './utils/useHeaderLandingPage'
 
 export function HeaderLandingPage() {
-  const [hidden, setHidden] = useState(false)
+  const { scrollDown, bgcolor, showmenu, hiddenToggle } = useHeaderLandingPage()
+
   return (
-    <div className="fixed top-0 left-0 z-50 flex h-[120px] w-screen items-center px-10 lg:justify-between lg:px-[120px]">
+    <div
+      className={`fixed ${
+        !showmenu && scrollDown ? '-top-[100px]' : 'top-0'
+      } left-0 z-50 flex h-[100px] w-screen items-center px-10 transition-all delay-100 duration-700 lg:justify-between lg:px-[120px]`}
+      style={{ backgroundColor: bgcolor }}
+    >
       <div className="flex items-center gap-5">
         <img
           src="https://cdn-icons-png.flaticon.com/512/2991/2991606.png"
@@ -17,20 +23,20 @@ export function HeaderLandingPage() {
       </div>
       <div
         className={`${
-          hidden ? 'right-0' : 'right-[-300px]'
-        } absolute top-0 flex h-screen w-[300px] flex-col-reverse items-start justify-end gap-10 px-5 pt-[100px] backdrop-blur-md duration-500 lg:static lg:h-auto lg:w-auto lg:flex-row lg:items-center lg:px-0 lg:pt-0 lg:backdrop-blur-0 lg:duration-0 xl:gap-[200px]`}
+          showmenu ? 'right-0' : 'right-[-300px]'
+        } absolute top-0 flex h-screen w-[300px] flex-col-reverse items-start justify-end gap-10 bg-black pl-5 pr-7 pt-[120px] duration-500 lg:static lg:h-auto lg:w-auto lg:flex-row lg:items-center lg:bg-transparent lg:px-0 lg:pt-0 lg:duration-0 xl:gap-[200px]`}
       >
         <Navbar />
-        <LoginButton />
+        <SubmitButton text="Login" dark={false} />
       </div>
       <button
         className="absolute right-10 flex w-auto items-center justify-end gap-3 text-neutral-100 lg:hidden"
         type="button"
-        onClick={() => setHidden((prev) => !prev)}
+        onClick={hiddenToggle}
       >
         <p>Menu</p>
         <FaArrowRight
-          className={`${hidden ? 'rotate-0' : '-rotate-180'} duration-500`}
+          className={`${showmenu ? 'rotate-0' : '-rotate-180'} duration-500`}
         />
       </button>
     </div>

@@ -1,6 +1,6 @@
 export function Navbar() {
   return (
-    <nav>
+    <nav className="w-full lg:w-auto">
       <ul className="flex flex-col gap-10 text-neutral-400 lg:flex-row">
         <li className="nav-ul-item">Home</li>
         <li className="nav-ul-item">Features</li>
